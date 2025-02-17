@@ -13,7 +13,7 @@ const PaypalTest = () => {
 
   const handleApprove = async (orderID) => {
     try {
-      const res = await fetch("http://localhost:5000/capture-paypal-order", {
+      const res = await fetch("https://vinnie-paypal-8mm2.vercel.app//capture-paypal-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ orderID }),

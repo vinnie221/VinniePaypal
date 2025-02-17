@@ -11,8 +11,8 @@ const PAYPAL_CLIENT_ID = process.env.PAYPAL_CLIENT_ID;
 const PAYPAL_SECRET = process.env.PAYPAL_SECRET;
 const PAYPAL_API = "https://api-m.paypal.com"; // Use PayPal's live API URL when switching to live mode
 
-const RETURN_URL = "http://localhost:5173/payment-success";
-const CANCEL_URL = "http://localhost:5173/payment-cancel";
+const RETURN_URL = "https://vinnie-paypal.vercel.app/payment-success";
+const CANCEL_URL = "https://vinnie-paypal.vercel.app/payment-cancel";
 
 // Create a PayPal order
 app.post("/create-paypal-order", async (req, res) => {
