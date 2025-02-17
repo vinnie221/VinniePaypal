@@ -24,7 +24,7 @@ app.post("/create-paypal-order", async (req, res) => {
       `${PAYPAL_API}/v2/checkout/orders`,
       {
         intent: "CAPTURE",
-        purchase_units: [{ amount: { currency_code: "USD", value: amount } }], // Example currency: USD
+        purchase_units: [{ amount: { currency_code: "USD", value: amount } }],
         application_context: {
           return_url: RETURN_URL,
           cancel_url: CANCEL_URL,

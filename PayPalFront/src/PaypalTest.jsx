@@ -7,17 +7,17 @@ const PaypalTest = () => {
   const [error, setError] = useState(null);
   const [text, setText] = useState("");
   const [color, setColor] = useState("text-blue-500");
+  const [amount, setAmount] = useState('');
 
   const paypalClientId = import.meta.env.VITE_PAYPAL_CLIENT_ID;
 
   const handleApprove = async (orderID) => {
     try {
-      const res = await fetch("https://vinnie-paypal-8mm2.vercel.app//capture-paypal-order", {
+      const res = await fetch("https://vinnie-paypal-8mm2.vercel.app/capture-paypal-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ orderID }),
       });
-
       const data = await res.json();
       if (data.status === "COMPLETED") {
         setPaidFor(true);
@@ -85,13 +85,22 @@ const PaypalTest = () => {
         className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md mt-6"
       >
         <h1 className="text-xl font-bold mb-2 text-center">Pay with PayPal</h1>
+        
+        <input
+          type="number"
+          value={amount}
+          onChange={(e) => setAmount(parseFloat(e.target.value) || '')}
+          className="w-full p-2 border border-gray-300 rounded mb-4 text-center"
+          placeholder="Enter amount"
+        />
+        
         <PayPalScriptProvider options={{ "client-id": paypalClientId }}>
           <PayPalButtons
             createOrder={async () => {
-              const res = await fetch("https://vinnie-paypal-8mm2.vercel.app/create-paypal-order", {
+              const res = await fetch("http://localhost:5000/create-paypal-order", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ amount: 10.0 }),
+                body: JSON.stringify({ amount }),
               });
               const data = await res.json();
               return data.id;
