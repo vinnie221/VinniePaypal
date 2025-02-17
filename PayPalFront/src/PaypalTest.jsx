@@ -7,11 +7,13 @@ const PaypalTest = () => {
   const [error, setError] = useState(null);
   const [text, setText] = useState("");
   const [color, setColor] = useState("text-blue-500");
-  const [amount, setAmount] = useState('');
+  const [amount, setAmount] = useState(0);
 
   const paypalClientId = import.meta.env.VITE_PAYPAL_CLIENT_ID;
 
   const handleApprove = async (orderID) => {
+    //https://vinnie-paypal-8mm2.vercel.app/
+    //http://localhost:5173
     try {
       const res = await fetch("https://vinnie-paypal-8mm2.vercel.app/capture-paypal-order", {
         method: "POST",
@@ -89,7 +91,7 @@ const PaypalTest = () => {
         <input
           type="number"
           value={amount}
-          onChange={(e) => setAmount(parseFloat(e.target.value) || '')}
+          onChange={(e) => setAmount(parseFloat(e.target.value) || 0)}
           className="w-full p-2 border border-gray-300 rounded mb-4 text-center"
           placeholder="Enter amount"
         />
