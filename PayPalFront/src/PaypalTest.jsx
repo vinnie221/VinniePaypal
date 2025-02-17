@@ -74,7 +74,7 @@ const PaypalTest = () => {
       transition={{ duration: 0.8 }}
       className="flex flex-col items-center justify-center min-h-screen min-w-screen bg-gray-100"
     >
-      <h1 className={`text-3xl font-bold ${color} transition-all duration-500`}>
+      <h1 className={`text-3xl font-bold ${color} transition-all h-10 duration-500`}>
         {text}
       </h1>
 
