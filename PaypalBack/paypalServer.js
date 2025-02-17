@@ -14,6 +14,10 @@ const PAYPAL_API = "https://api-m.paypal.com"; // Use PayPal's live API URL when
 const RETURN_URL = "https://vinnie-paypal.vercel.app/payment-success";
 const CANCEL_URL = "https://vinnie-paypal.vercel.app/payment-cancel";
 
+// const RETURN_URL = "http://localhost:5173/payment-success";
+// const CANCEL_URL = "http://localhost:5173/payment-cancel";
+
+
 // Create a PayPal order
 app.post("/create-paypal-order", async (req, res) => {
   try {
